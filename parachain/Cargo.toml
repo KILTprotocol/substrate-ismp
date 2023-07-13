@@ -30,8 +30,8 @@ sp-runtime = { default-features = false, git = "https://github.com/paritytech/su
 sp-consensus-aura = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.42" }
 
 # cumulus
-parachain-system = { package = "cumulus-pallet-parachain-system", git = "https://github.com/paritytech/cumulus", branch = "release-v0.9.420", default-features = false }
-cumulus-primitives-core = { git = "https://github.com/paritytech/cumulus", branch = "release-v0.9.420", default-features = false }
+parachain-system = { package = "cumulus-pallet-parachain-system", git = "https://github.com/paritytech/cumulus", branch = "polkadot-v0.9.42", default-features = false }
+cumulus-primitives-core = { git = "https://github.com/paritytech/cumulus", branch = "polkadot-v0.9.42", default-features = false }
 
 # local
 ismp-primitives = { path = "../pallet-ismp/primitives", default-features = false }

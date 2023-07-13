@@ -33,7 +33,7 @@ pub struct ConsensusInherentProvider(Option<ConsensusMessage>);
 
 impl ConsensusInherentProvider {
     /// Create the [`ConsensusMessage`] at the given `relay_parent`. Will be [`None`] if no para ids
-    /// have been confguired.
+    /// have been configured.
     pub async fn create<C, B>(
         client: Arc<C>,
         relay_parent: PHash,
