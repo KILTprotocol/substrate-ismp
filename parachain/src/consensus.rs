@@ -119,7 +119,6 @@ impl<T, R> ConsensusClient for ParachainConsensusClient<T, R>
 where
     R: RelayChainOracle,
     T: pallet_ismp::Config + super::Config,
-    T::BlockNumber: Into<u32>,
     T::Hash: From<H256>,
 {
     fn verify_consensus(
@@ -210,7 +209,7 @@ where
                 Err(Error::ImplementationSpecific("Timestamp or ismp root not found".into()))?
             }
 
-            let height: u32 = (*header.number()).into();
+            let height: u64 = (*header.number()).into();
 
             let state_id = match host.host_state_machine() {
                 StateMachine::Kusama(_) => StateMachine::Kusama(id),
@@ -226,7 +225,7 @@ where
                     overlay_root: Some(overlay_root),
                     state_root: header.state_root,
                 },
-                height: height.into(),
+                height,
             };
 
             intermediates.insert(state_id, intermediate);
@@ -254,7 +253,6 @@ where
 impl<T> StateMachineClient for ParachainStateMachine<T>
 where
     T: pallet_ismp::Config + super::Config,
-    T::BlockNumber: Into<u32>,
     T::Hash: From<H256>,
 {
     fn verify_membership(
